@@ -1,0 +1,61 @@
+{
+	"name": "okedia",
+	"description": "Monorepo holding OKEDIA Builders & Templates",
+	"dependencies": {
+		"@chakra-ui/react": "^3.16.1",
+		"@emotion/react": "^11.14.0",
+		"@intevation/tiptap-extension-office-paste": "^0.0.5",
+		"@mantine/carousel": "^7.17.3",
+		"@mantine/colors-generator": "^7.17.3",
+		"@mantine/core": "^7.17.3",
+		"@mantine/dates": "^7.17.3",
+		"@mantine/dropzone": "^7.17.3",
+		"@mantine/form": "^7.17.3",
+		"@mantine/hooks": "^7.17.3",
+		"@mantine/modals": "^7.17.3",
+		"@mantine/notifications": "^7.17.3",
+		"@mantine/tiptap": "^7.17.3",
+		"@neoconfetti/react": "^1.0.0",
+		"@okedia/shared": "file:./packages/shared",
+		"@tabler/icons-react": "^3.31.0",
+		"@tiptap/extension-character-count": "^2.11.7",
+		"@tiptap/extension-placeholder": "^2.11.7",
+		"@tiptap/extension-text-align": "^2.11.7",
+		"@tiptap/extension-underline": "^2.11.7",
+		"@tiptap/extension-youtube": "^2.11.7",
+		"@vercel/functions": "^2.0.0",
+		"@vercel/speed-insights": "^1.2.0",
+		"@zodyac/zod-mongoose": "^3.2.0",
+		"chroma-js": "^3.1.2",
+		"dompurify": "^3.2.4",
+		"html5-device-mockups": "^3.2.1",
+		"immer": "^10.1.1",
+		"next": "15.3.1",
+		"next-firebase-auth-edge": "^1.9.1",
+		"react": "18.3.1",
+		"react-dom": "18.3.1",
+		"react-hook-form": "^7.56.1",
+		"use-immer": "^0.11.0",
+		"@okedia/core": "file:./packages/core",
+		"@okedia/sdk-js": "file:./packages/sdk-js"
+	},
+	"devDependencies": {
+		"@hookform/devtools": "^4.3.3",
+		"@types/express": "^5.0.1",
+		"@types/node": "^22.14.1",
+		"raw-loader": "^4.0.2",
+		"syncpack": "^13.0.3",
+		"turbo": "^2.5.0"
+	},
+	"packageManager": "npm@10.5.2",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"check-types": "tsc --noEmit",
+		"dev": "npx turbo dev --turbopack"
+	},
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	]
+}

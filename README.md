@@ -1,0 +1,62 @@
+# Table of Contents
+
+- _(todo)_ **Introduction**
+  - _(todo)_ Ideology
+  - _(todo) Archetecture_
+- _(todo) **Application State**_
+- _(todo)_ **Branding**
+  - _(todo)_ Dynamic Branding
+  - _(todo)_ Theming
+  - _(todo)_ Localisation (l10n)
+- **Authentication**
+  - _(todo)_ Local User
+  - _(todo)_ Firebase User
+- _(todo)_ **Database**
+- _(todo)_ **Billing**
+  - _(todo)_ Domains
+- **Methods**
+- **API**
+  - _(todo)_ /auth
+    - /claims
+      - POST
+    - /createsession
+      - GET
+    - /devsession
+      - POST
+  - _(todo)_ /billing
+    - /coupons
+      - GET
+    - /customers
+      - /subscriptions
+        - GET, PATCH, DELETE
+      - /sessions
+        - GET
+      - /paymentmethods
+        - GET, DELETE
+      - /paymentintents
+        - POST
+      - /invoices
+        - GET
+    - _(todo)_ /products
+      - /prices
+        - GET
+    - _(todo)_ /webhooks
+      - POST
+  - _(todo)_ /domains
+    - /whois
+      - GET
+  - _(todo)_ /profiles
+    - POST, PATCH
+  - _(todo)_ /servicestatus
+    - GET
+  - _(todo)_ /templates
+    - GET, POST
+  - _(todo)_ /types
+    - GET, POST, PATCH
+  - _(todo)_ /websites
+    - GET, POST, PATCH, DELETE
+- **Setup & Environment**
+  - [Production Environment](docs/environment/index.md##global-environment-variables)
+  - [Developer Environment](docs/environment/index.md#developer-environment)
+  - _(todo)_ Testing
+  - _(todo)_ [Building](docs/environment/index.md#build)

@@ -1,0 +1,27 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Public read, admin-only write access to website-screenshots
+    match /website-screenshots/{file=**} {
+      allow get: if true; // Public read access
+
+      // Only allow writes from Firebase Admin SDK (e.g. server environment)
+      allow create, update, delete: if request.auth.token.admin == true;
+    }
+
+    // Allow the creation of a new folder if the user is authenticated
+    match /{newFolder} {
+      allow create: if request.auth != null;
+    }
+
+    // For user-specific folders and files
+    match /{userFolder}/{allPaths=**} {
+      // Full access only if folder name matches user UID
+      allow list, create, update, delete, read, write: if userFolder == request.auth.uid;
+
+      // Public get access for any other folders (e.g., viewer mode)
+      allow get: if true;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"globalPassThroughEnv": ["PLAYWRIGHT_*"],
+	"globalEnv": [
+		"FIREBASE_PRIVATE_KEY",
+		"WHMCS_IDENTIFIER",
+		"WHMCS_SECRET",
+		"STRIPE_API_KEY",
+		"STRIPE_DEMO_PACKAGE_LOOKUP_KEY",
+		"STRIPE_WEBHOOK_SECRET",
+		"MONGODB_URI",
+		"DB_NAME",
+		"GOOGLE_FONTS_API_KEY",
+		"DEFAULT_FONT_REQUEST",
+		"AWS_ACCESS_KEY_ID",
+		"AWS_SECRET_ACCESS_KEY",
+		"AWS_SEND_FROM_EMAIL",
+		"SCREENSHOT_API_KEY",
+		"SCREENSHOT_API_URL",
+		"SENDY_API_URL",
+		"SENDY_API_KEY",
+		"SENDY_USERS_LIST_ID"
+	],
+	"tasks": {
+		"dev": {
+			"persistent": true,
+			"cache": false,
+			"dependsOn": ["@okedia/core#build", "@okedia/sdk-js#build", "^build"],
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				".env.development.local",
+				".env.local",
+				".env.development",
+				".env"
+			]
+		},
+		"dev:prod": {
+			"persistent": true,
+			"cache": false,
+			"inputs": ["$TURBO_DEFAULT$", ".env"]
+		},
+		"build": {
+			"dependsOn": ["@okedia/core#build"],
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				".env.production.local",
+				".env.local",
+				".env.production",
+				".env"
+			],
+			"outputs": [".next/**", "!.next/cache/**"]
+		},
+		"@web-design-for/builder#build": {
+			"dependsOn": [
+				"@web-design-for/builder#build:emails",
+				"@okedia/shared#build"
+			],
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"!src/emails/**/*",
+				"!src/emails/compiled/**/*"
+			],
+			"outputs": [".next/**", "!.next/cache/**"]
+		},
+		"@web-design-for/builder#build:emails": {
+			"inputs": ["src/emails/**/*"],
+			"outputs": ["src/emails/compiled/**"]
+		},
+		"@web-design-for/websites#build": {
+			"dependsOn": ["@okedia/shared#build"],
+			"outputs": [".next/**", "!.next/cache/**"]
+		},
+		"@okedia/core#build": {
+			"outputs": ["dist/**"]
+		},
+		"@okedia/sdk-js#build": {
+			"dependsOn": ["@okedia/core#build"],
+			"outputs": ["dist/**"]
+		},
+		"e2e": {
+			"dependsOn": ["^build", "@web-design-for/builder#test:e2e"]
+		},
+
+		"@web-design-for/builder#test:e2e": {
+			"dependsOn": ["@web-design-for/builder#build"]
+		},
+		"check-types": {
+			"dependsOn": ["^check-types"]
+		}
+	}
+}
